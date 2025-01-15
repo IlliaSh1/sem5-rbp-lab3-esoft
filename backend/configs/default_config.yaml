@@ -1,0 +1,16 @@
+server:
+  port: 3000
+
+database:
+  db_type: mysql
+  host: mysql
+  port: 3306
+  db_name: esoft
+  admin_name: admin
+  db_password: admin
+  ssl: disable
+
+jwt:
+  secret_key: "super-duper-secret-key-4-jwt-auth"
+  access_token_duration: "1h"
+  refresh_token_duration: "8h"
