@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/IlliaSh1/backend/internal/models"
-	"github.com/gofiber/fiber/v2/log"
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/log"
 )
 
 func (controller *realtorController) Create(ctx fiber.Ctx) error {

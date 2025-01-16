@@ -7,8 +7,8 @@ import (
 
 	"github.com/IlliaSh1/backend/configs"
 	"github.com/IlliaSh1/backend/internal/storage"
-	"github.com/gofiber/fiber/v2/log"
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/log"
 	"github.com/ilyakaznacheev/cleanenv"
 )
 

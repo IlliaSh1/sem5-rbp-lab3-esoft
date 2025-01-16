@@ -20,4 +20,5 @@ func AddRealtorController(
 	api.Get("/realtors", controller.GetAll)
 	api.Post("/realtors", controller.Create)
 	api.Put("/realtors/:id", controller.Update)
+	api.Delete("/realtors/:id", controller.Delete)
 }

@@ -20,4 +20,5 @@ func AddClientControllerRoutes(
 	api.Get("/clients", controller.GetAll)
 	api.Post("/clients", controller.Create)
 	api.Put("/clients/:id", controller.Update)
+	api.Delete("/clients/:id", controller.Delete)
 }

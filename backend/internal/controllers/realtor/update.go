@@ -5,8 +5,8 @@ import (
 
 	"github.com/IlliaSh1/backend/internal/models"
 	repos_mysql_realtor "github.com/IlliaSh1/backend/internal/repos/mysql/realtor"
-	"github.com/gofiber/fiber/v2/log"
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/log"
 )
 
 func (controller *realtorController) Update(ctx fiber.Ctx) error {
