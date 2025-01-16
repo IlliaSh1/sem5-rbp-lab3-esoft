@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/IlliaSh1/backend/configs"
 	repos_mysql_client "github.com/IlliaSh1/backend/internal/repos/mysql/client"
+	repos_mysql_realtor "github.com/IlliaSh1/backend/internal/repos/mysql/realtor"
 	"gorm.io/gorm"
 )
 
@@ -16,6 +17,8 @@ type serviceProvider struct {
 	// userRepo    services.IUserRepo
 
 	clientRepo *repos_mysql_client.ClientRepo
+
+	realtorRepo *repos_mysql_realtor.RealtorRepo
 	// ...
 }
 
@@ -58,4 +61,11 @@ func (s *serviceProvider) ClientRepo() *repos_mysql_client.ClientRepo {
 		s.clientRepo = repos_mysql_client.NewClientRepo(s.db)
 	}
 	return s.clientRepo
+}
+
+func (s *serviceProvider) RealtorRepo() *repos_mysql_realtor.RealtorRepo {
+	if s.realtorRepo == nil {
+		s.realtorRepo = repos_mysql_realtor.NewRealtorRepo(s.db)
+	}
+	return s.realtorRepo
 }

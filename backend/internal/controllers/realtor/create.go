@@ -32,7 +32,7 @@ func (controller *realtorController) Create(ctx fiber.Ctx) error {
 		PercentageOfCommission: req.PercentageOfCommission,
 	}
 
-	created_realtor, err := controller.realtorService.Create(&realtor_to_create)
+	created_realtor, err := controller.realtorService.Save(&realtor_to_create)
 	if err != nil {
 		log.Error(err)
 		return ctx.SendStatus(fiber.StatusInternalServerError)

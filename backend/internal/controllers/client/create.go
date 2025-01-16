@@ -33,7 +33,7 @@ func (controller *ClientController) Create(ctx fiber.Ctx) error {
 		Patronymic: req.Patronymic,
 	}
 
-	created_client, err := controller.clientService.Create(&client_to_create)
+	created_client, err := controller.clientService.Save(&client_to_create)
 	if err != nil {
 		log.Error(err)
 		return ctx.SendStatus(fiber.StatusInternalServerError)

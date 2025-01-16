@@ -12,12 +12,12 @@ type ClientController struct {
 func AddClientControllerRoutes(
 	api fiber.Router,
 	clientService *repos_mysql_client.ClientRepo,
-) error {
+) {
 	controller := ClientController{
 		clientService: clientService,
 	}
 
-	api.Post("/client", controller.Create)
-
-	return nil
+	api.Get("/clients", controller.GetAll)
+	api.Post("/clients", controller.Create)
+	api.Put("/clients/:id", controller.Update)
 }

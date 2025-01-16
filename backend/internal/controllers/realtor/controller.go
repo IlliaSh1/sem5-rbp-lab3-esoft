@@ -12,12 +12,12 @@ type realtorController struct {
 func AddRealtorController(
 	api fiber.Router,
 	realtorService *repos_mysql_realtor.RealtorRepo,
-) error {
+) {
 	controller := realtorController{
 		realtorService: realtorService,
 	}
 
-	api.Post("/realtor", controller.Create)
-
-	return nil
+	api.Get("/realtors", controller.GetAll)
+	api.Post("/realtors", controller.Create)
+	api.Put("/realtors/:id", controller.Update)
 }
