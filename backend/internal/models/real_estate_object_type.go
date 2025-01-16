@@ -9,8 +9,10 @@ func (*RealEstateObjectType) TableName() string {
 	return "real_estate_object_types"
 }
 
+type ERealEstateObjectType int
+
 const (
-	KRealEstateObjectTypeUnknownID int = iota
+	KRealEstateObjectTypeUnknownID ERealEstateObjectType = iota
 	KRealEstateObjectTypeApartmentID
 	KRealEstateObjectTypeHouseID
 	KRealEstateObjectTypeLandID

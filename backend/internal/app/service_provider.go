@@ -4,11 +4,14 @@ import (
 	"github.com/IlliaSh1/backend/configs"
 	repos_mysql_client "github.com/IlliaSh1/backend/internal/repos/mysql/client"
 	repos_mysql_realtor "github.com/IlliaSh1/backend/internal/repos/mysql/realtor"
+	"github.com/IlliaSh1/backend/internal/storage/transactor"
 	"gorm.io/gorm"
 )
 
 type serviceProvider struct {
 	db *gorm.DB
+
+	transactor *transactor.Transactor
 
 	jwtConfig *configs.JWTConfig
 	// jwtService controllers.IJWTService
