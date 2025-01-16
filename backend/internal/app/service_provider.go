@@ -2,6 +2,7 @@ package app
 
 import (
 	"github.com/IlliaSh1/backend/configs"
+	repos_mysql_client "github.com/IlliaSh1/backend/internal/repos/mysql/client"
 	"gorm.io/gorm"
 )
 
@@ -13,6 +14,8 @@ type serviceProvider struct {
 
 	// userService controllers.IUserService
 	// userRepo    services.IUserRepo
+
+	clientRepo *repos_mysql_client.ClientRepo
 	// ...
 }
 
@@ -49,3 +52,10 @@ func newServiceProvider(db *gorm.DB, jwtConfig *configs.JWTConfig) *serviceProvi
 // 	}
 // 	return s.userRepo
 // }
+
+func (s *serviceProvider) ClientRepo() *repos_mysql_client.ClientRepo {
+	if s.clientRepo == nil {
+		s.clientRepo = repos_mysql_client.NewClientRepo(s.db)
+	}
+	return s.clientRepo
+}
