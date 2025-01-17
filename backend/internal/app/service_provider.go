@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/IlliaSh1/backend/configs"
 	repos_mysql_client "github.com/IlliaSh1/backend/internal/repos/mysql/client"
+	repos_mysql_offer "github.com/IlliaSh1/backend/internal/repos/mysql/offer"
 	repos_mysql_real_estate_object "github.com/IlliaSh1/backend/internal/repos/mysql/real_estate_object"
 	repos_mysql_realtor "github.com/IlliaSh1/backend/internal/repos/mysql/realtor"
 	"github.com/IlliaSh1/backend/internal/storage/transactor"
@@ -25,6 +26,8 @@ type serviceProvider struct {
 	realtorRepo *repos_mysql_realtor.RealtorRepo
 
 	realEstateObjectRepo *repos_mysql_real_estate_object.RealEstateObjectRepo
+
+	offerRepo *repos_mysql_offer.OfferRepo
 	// ...
 }
 
@@ -88,4 +91,11 @@ func (s *serviceProvider) RealEstateObjectRepo() *repos_mysql_real_estate_object
 		s.realEstateObjectRepo = repos_mysql_real_estate_object.NewRealEstateObjectRepo(s.db)
 	}
 	return s.realEstateObjectRepo
+}
+
+func (s *serviceProvider) OfferRepo() *repos_mysql_offer.OfferRepo {
+	if s.offerRepo == nil {
+		s.offerRepo = repos_mysql_offer.NewOfferRepo(s.db)
+	}
+	return s.offerRepo
 }

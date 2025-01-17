@@ -9,7 +9,7 @@ type realtorController struct {
 	realtorService *repos_mysql_realtor.RealtorRepo
 }
 
-func AddRealtorController(
+func AddRealtorControllerRoutes(
 	api fiber.Router,
 	realtorService *repos_mysql_realtor.RealtorRepo,
 ) {

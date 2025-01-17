@@ -46,9 +46,8 @@ type CreateRequest struct {
 	Name       *string `json:"name"`
 	Surname    *string `json:"surname"`
 	Patronymic *string `json:"patronymic"`
-
-	Phone *string `json:"phone"`
-	Email *string `json:"email"`
+	Phone      *string `json:"phone"`
+	Email      *string `json:"email"`
 }
 
 func (request *CreateRequest) Validate() (err error) {
