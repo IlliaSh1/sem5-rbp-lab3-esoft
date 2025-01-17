@@ -4,6 +4,7 @@ import (
 	"errors"
 
 	"github.com/IlliaSh1/backend/internal/models"
+	"gorm.io/gorm"
 )
 
 var (
@@ -14,10 +15,10 @@ func (repo *ClientRepo) GetById(id int) (*models.Client, error) {
 	var client *models.Client
 	err := repo.db.First(&client, id).Error
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, ErrClientNotFound
+		}
 		return nil, err
-	}
-	if client == nil {
-		return nil, ErrClientNotFound
 	}
 
 	return client, nil

@@ -1,6 +1,5 @@
 CREATE TABLE apartments (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    real_estate_object_id INT NOT NULL UNIQUE,
+    real_estate_object_id INT PRIMARY KEY,
     floor_number INT DEFAULT NULL,
     rooms_count INT UNSIGNED DEFAULT NULL,
     area INT UNSIGNED DEFAULT NULL,
@@ -9,8 +8,7 @@ CREATE TABLE apartments (
 );
 
 CREATE TABLE houses (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    real_estate_object_id INT NOT NULL UNIQUE,
+    real_estate_object_id INT PRIMARY KEY,
     floors_count INT DEFAULT NULL,
     rooms_count INT UNSIGNED DEFAULT NULL,
     area INT UNSIGNED DEFAULT NULL,
@@ -19,8 +17,7 @@ CREATE TABLE houses (
 );
 
 CREATE TABLE lands (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    real_estate_object_id INT NOT NULL UNIQUE,
+    real_estate_object_id INT PRIMARY KEY,
     area INT UNSIGNED DEFAULT NULL,
 
     FOREIGN KEY (real_estate_object_id) REFERENCES real_estate_objects(id)

@@ -4,6 +4,7 @@ import (
 	"errors"
 
 	"github.com/IlliaSh1/backend/internal/models"
+	"gorm.io/gorm"
 )
 
 var ErrRealEstateObjectNotFound = errors.New("real estate object not found")
@@ -12,11 +13,10 @@ func (repo *RealEstateObjectRepo) GetById(id int) (*models.RealEstateObject, err
 	realEstateObject := &models.RealEstateObject{}
 	err := repo.db.First(&realEstateObject, id).Error
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, ErrRealEstateObjectNotFound
+		}
 		return nil, err
-	}
-
-	if realEstateObject == nil {
-		return nil, ErrRealEstateObjectNotFound
 	}
 
 	return realEstateObject, nil
