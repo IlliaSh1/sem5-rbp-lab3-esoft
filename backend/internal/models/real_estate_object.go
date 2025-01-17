@@ -5,7 +5,8 @@ type RealEstateObject struct {
 
 	RealEstateObjectTypeID int `json:"real_estate_object_type_id" gorm:"column:real_estate_object_type_id"`
 
-	Coordinates *Point `json:"coordinates" gorm:"column:coordinates"`
+	Latitude  *float64 `json:"latitude" gorm:"column:latitude"`
+	Longitude *float64 `json:"longitude" gorm:"column:longitude"`
 
 	City            *string `json:"city" gorm:"column:city"`
 	Street          *string `json:"street" gorm:"column:street"`

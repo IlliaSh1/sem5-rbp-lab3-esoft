@@ -28,7 +28,8 @@ func (controller *realEstateObjectController) Create(ctx fiber.Ctx) error {
 
 	real_estate_object_to_create := models.RealEstateObject{
 		RealEstateObjectTypeID: req.RealEstateObjectTypeID,
-		Coordinates:            req.Coordinates,
+		Latitude:               req.Latitude,
+		Longitude:              req.Longitude,
 		City:                   req.City,
 		Street:                 req.Street,
 		HouseNumber:            req.HouseNumber,
@@ -87,7 +88,7 @@ func (controller *realEstateObjectController) Create(ctx fiber.Ctx) error {
 	})
 	if err != nil {
 		log.Error("within tx error: ", err)
-		return nil
+		return ctx.SendStatus(fiber.StatusInternalServerError)
 	}
 
 	return ctx.Status(fiber.StatusCreated).JSON(fiber.Map{
@@ -103,12 +104,13 @@ type CreateRequest struct {
 	HouseData     *CreateHouseData     `json:"house_data"`
 	LandData      *CreateLandData      `json:"land_data"`
 
-	Coordinates *models.Point `json:"coordinates"`
+	Latitude  *float64 `json:"latitude"`
+	Longitude *float64 `json:"longitude"`
 
-	City            *string `json:"city" gorm:"column:city"`
-	Street          *string `json:"street" gorm:"column:street"`
-	HouseNumber     *string `json:"house_number" gorm:"column:house_number"`
-	ApartmentNumber *string `json:"apartment_number" gorm:"column:apartment_number"`
+	City            *string `json:"city"`
+	Street          *string `json:"street"`
+	HouseNumber     *string `json:"house_number"`
+	ApartmentNumber *string `json:"apartment_number"`
 }
 
 func (req *CreateRequest) Validate() (err error) {
@@ -127,6 +129,14 @@ func (req *CreateRequest) Validate() (err error) {
 		}
 	default:
 		err = errors.Join(err, fmt.Errorf("real_estate_object_type_id is invalid, it must be 1, 2 or 3"))
+	}
+
+	if req.Latitude != nil && (*req.Latitude < -90 || *req.Latitude > 90) {
+		err = errors.Join(err, fmt.Errorf("latitude must be between -90 and 90"))
+	}
+
+	if req.Longitude != nil && (*req.Longitude < -180 || *req.Longitude > 180) {
+		err = errors.Join(err, fmt.Errorf("longitude must be between -180 and 180"))
 	}
 
 	return err

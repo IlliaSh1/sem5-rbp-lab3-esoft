@@ -1,6 +1,6 @@
 
 
-CREATE TABLE offers {
+CREATE TABLE offers (
     id INT PRIMARY KEY AUTO_INCREMENT,
     real_estate_object_id INT NOT NULL,
     client_id INT NOT NULL,
@@ -10,9 +10,9 @@ CREATE TABLE offers {
     FOREIGN KEY (real_estate_object_id) REFERENCES real_estate_objects(id),
     FOREIGN KEY (client_id) REFERENCES clients(id),
     FOREIGN KEY (realtor_id) REFERENCES realtors(id)
-};
+);
 
-CREATE TABLE needs {
+CREATE TABLE needs (
     id INT PRIMARY KEY AUTO_INCREMENT,
     real_estate_object_type_id INT NOT NULL,
     client_id INT NOT NULL,
@@ -23,9 +23,9 @@ CREATE TABLE needs {
     FOREIGN KEY (real_estate_object_type_id) REFERENCES real_estate_object_types(id),
     FOREIGN KEY (client_id) REFERENCES clients(id),
     FOREIGN KEY (realtor_id) REFERENCES realtors(id)
-};
+);
 
-CREATE TABLE apartment_needs {
+CREATE TABLE apartment_needs (
     need_id INT PRIMARY KEY,
     min_floor_number INT DEFAULT NULL,
     max_floor_number INT DEFAULT NULL,
@@ -34,9 +34,9 @@ CREATE TABLE apartment_needs {
     min_area INT UNSIGNED DEFAULT NULL,
     max_area INT UNSIGNED DEFAULT NULL,
     FOREIGN KEY (need_id) REFERENCES needs(id)
-};
+);
 
-CREATE TABLE house_needs {
+CREATE TABLE house_needs (
     need_id INT PRIMARY KEY,
     min_floors_count INT DEFAULT NULL,
     max_floors_count INT DEFAULT NULL,
@@ -45,11 +45,11 @@ CREATE TABLE house_needs {
     min_area INT UNSIGNED DEFAULT NULL,
     max_area INT UNSIGNED DEFAULT NULL,
     FOREIGN KEY (need_id) REFERENCES needs(id)
-};
+);
 
-CREATE TABLE land_needs {
+CREATE TABLE land_needs (
     need_id INT PRIMARY KEY,
     min_area INT UNSIGNED DEFAULT NULL,
     max_area INT UNSIGNED DEFAULT NULL,
     FOREIGN KEY (need_id) REFERENCES needs(id)
-};
+);

@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/IlliaSh1/backend/configs"
 	repos_mysql_client "github.com/IlliaSh1/backend/internal/repos/mysql/client"
+	repos_mysql_real_estate_object "github.com/IlliaSh1/backend/internal/repos/mysql/real_estate_object"
 	repos_mysql_realtor "github.com/IlliaSh1/backend/internal/repos/mysql/realtor"
 	"github.com/IlliaSh1/backend/internal/storage/transactor"
 	"gorm.io/gorm"
@@ -22,6 +23,8 @@ type serviceProvider struct {
 	clientRepo *repos_mysql_client.ClientRepo
 
 	realtorRepo *repos_mysql_realtor.RealtorRepo
+
+	realEstateObjectRepo *repos_mysql_real_estate_object.RealEstateObjectRepo
 	// ...
 }
 
@@ -31,6 +34,13 @@ func newServiceProvider(db *gorm.DB, jwtConfig *configs.JWTConfig) *serviceProvi
 
 		jwtConfig: jwtConfig,
 	}
+}
+
+func (s *serviceProvider) Transactor() *transactor.Transactor {
+	if s.transactor == nil {
+		s.transactor = transactor.NewTransactor(s.db)
+	}
+	return s.transactor
 }
 
 // func (s *ServiceProvider) JWTService() controllers.IJWTService {
@@ -71,4 +81,11 @@ func (s *serviceProvider) RealtorRepo() *repos_mysql_realtor.RealtorRepo {
 		s.realtorRepo = repos_mysql_realtor.NewRealtorRepo(s.db)
 	}
 	return s.realtorRepo
+}
+
+func (s *serviceProvider) RealEstateObjectRepo() *repos_mysql_real_estate_object.RealEstateObjectRepo {
+	if s.realEstateObjectRepo == nil {
+		s.realEstateObjectRepo = repos_mysql_real_estate_object.NewRealEstateObjectRepo(s.db)
+	}
+	return s.realEstateObjectRepo
 }

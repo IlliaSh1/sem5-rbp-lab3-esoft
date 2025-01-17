@@ -21,6 +21,8 @@ func AddRealEstateObjectController(
 		realEstateObjectService: realEstateObjectService,
 	}
 
-	// api.Get("/real-estate-objects", controller.GetAll)
+	api.Get("/real-estate-objects", controller.GetAll)
 	api.Post("/real-estate-objects", controller.Create)
+	api.Put("/real-estate-objects/:id", controller.Update)
+	api.Delete("/real-estate-objects/:id", controller.Delete)
 }
