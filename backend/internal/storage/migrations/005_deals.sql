@@ -1,8 +1,8 @@
 
 CREATE TABLE deals (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    offer_id INT NOT NULL,
-    need_id INT NOT NULL,
+    offer_id INT NOT NULL UNIQUE,
+    need_id INT NOT NULL UNIQUE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (offer_id) REFERENCES offers(id),
     FOREIGN KEY (need_id) REFERENCES needs(id)

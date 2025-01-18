@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/IlliaSh1/backend/configs"
 	repos_mysql_client "github.com/IlliaSh1/backend/internal/repos/mysql/client"
+	repos_mysql_deal "github.com/IlliaSh1/backend/internal/repos/mysql/deal"
 	repos_mysql_need "github.com/IlliaSh1/backend/internal/repos/mysql/need"
 	repos_mysql_offer "github.com/IlliaSh1/backend/internal/repos/mysql/offer"
 	repos_mysql_real_estate_object "github.com/IlliaSh1/backend/internal/repos/mysql/real_estate_object"
@@ -32,6 +33,7 @@ type serviceProvider struct {
 
 	needRepo *repos_mysql_need.NeedRepo
 
+	dealRepo *repos_mysql_deal.DealRepo
 	// ...
 }
 
@@ -109,4 +111,11 @@ func (s *serviceProvider) NeedRepo() *repos_mysql_need.NeedRepo {
 		s.needRepo = repos_mysql_need.NewNeedRepo(s.db)
 	}
 	return s.needRepo
+}
+
+func (s *serviceProvider) DealRepo() *repos_mysql_deal.DealRepo {
+	if s.dealRepo == nil {
+		s.dealRepo = repos_mysql_deal.NewDealRepo(s.db)
+	}
+	return s.dealRepo
 }
