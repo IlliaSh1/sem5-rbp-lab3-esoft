@@ -1,0 +1,30 @@
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+    width: 91%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filters li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.actions button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

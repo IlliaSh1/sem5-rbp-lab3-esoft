@@ -1,0 +1,102 @@
+.clients-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+.client-table {
+    flex: 1;
+    margin: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.client-table th, .client-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.client-table th {
+    background-color: #0078d7;
+    color: white;
+}
+
+.back-button {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.actions button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.app-header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content .logo {
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.header-content h1 {
+    margin: 0;
+}
+
+.header-content nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.stat-card {
+    background-color: #409de6;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 30%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+    margin: 0 0 10px;
+}
+
+.stat-card p {
+    font-size: 24px;
+    margin: 0;
+}
+
