@@ -24,7 +24,9 @@ const HomePage = () => {
                     <Link className="linkstyle" to="/realtors">
                         <Card title="Риэлторы" icon="💼" />
                     </Link>
-                    <Card title="Объекты недвижимости" icon="🏢" />
+                    <Link className="linkstyle" to="/realestates">
+                        <Card title="Объекты недвижимости" icon="🏢" />
+                    </Link>
                     <Card title="Предложения" icon="🔄" />
                     <Card title="Потребности" icon="📋" />
                     <Card title="Сделки" icon="↔️" />
